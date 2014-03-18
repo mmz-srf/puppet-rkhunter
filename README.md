@@ -3,13 +3,17 @@ puppet-rkhunter
 
 [![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
 
-Manage rkhunter installation and configuration with Puppet
-Installs the needed cronjob, which runs randomly in a defined timewindow.
+Manage rkhunter installation and configuration with Puppet. 
 
 ## Features
-- Manage 'allmost' all config entries (some of them dont make send in server environments)
+- Manage 'allmost' all config entries (some of them dont make sense in server environments)
 - Manage your whitelists
 - The update and check cronjob is called staggered (predefined timewindow)
+
+## Supported OS
+- Debian 
+- Redhat/CentOS (NOT tested yet. Please let me know if it Runs on redhat (gicara@gmail.com)
+- FreeBSD (NOT tested yet)
 
 ## Used Modules 
 Currently no external modules used. I maybe will make use of the puppet STDlib or Concat Module in future. 
@@ -53,5 +57,3 @@ class yourclass{
 }
 ```
 
-
-Test Travis
