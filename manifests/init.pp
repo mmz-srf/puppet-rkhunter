@@ -44,9 +44,9 @@ class rkhunter  (
 ) inherits ::rkhunter::params {
   include ::rkhunter::packages
 
-  file { "/etc/rkhunter.conf":
-    owner   => root,
-    group   => 0,
+  file { '/etc/rkhunter.conf':
+    owner   => 'root',
+    group   => 'root',
     mode    => '0644',
     content => template('rkhunter/etc/rkhunter.conf.erb');
   }
