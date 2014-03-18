@@ -50,3 +50,6 @@ class yourclass{
   class {'rkhunter::cron':}
 }
 ```
+
+
+Test Travis
