@@ -1,5 +1,3 @@
 fixtures:  
-  repositories:
-    concat: "https://github.com/camptocamp/puppet-augeas.git"
   symlinks:
     "rkhunter": "#{source_dir}"
