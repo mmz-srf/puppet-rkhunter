@@ -30,8 +30,8 @@ done
 # check if file exists
 if [ -f $file ];
 then
-   #get last modified
-   lmod=`stat --format -%Y $file | tr -d "-"`
+    #get last modified
+    lmod=`stat --format -%Y $file | tr -d "-"`
 else
     echo "PLUGIN ERROR: File $file not found!"
     exit $e_unknown
@@ -41,7 +41,7 @@ fi
 # get number of warnings
 warning_counter=$(cat $file | grep Warning | wc -l)
 
-if [ $warning_counter -ge 0 ]
+if [ $warning_counter -gt 0 ]
 then
     echo "ALERT: System not secured. $warning_counter open issues. Check Alert details!"
     cat $file
