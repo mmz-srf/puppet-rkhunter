@@ -1,0 +1,78 @@
+#!/bin/bash
+
+
+if [ $# -lt 1 ]
+then
+        echo "Usage : $0 [show|check|updatedb|updatedball]"
+        exit 0
+fi
+
+run_show ()
+{
+  echo "SHOW LAST RKHUNTER CHECKRESULT"
+  echo
+
+  for i in $(mco find); do
+    ssh $i "
+      if [ -s /var/log/rkhunter_warnings.log ] ; then
+        echo \"-----------------------------------------------------\"
+        echo \"Updating $i\" ;
+        cat /var/log/rkhunter_warnings.log;
+      fi"
+  done
+}
+
+run_check ()
+{
+  echo "RUN RKUNTER UPDATEDB"
+  echo
+
+  for i in $(mco find); do
+    echo "-----------------------------------------------------"
+    echo "$i"
+    echo
+    ssh $i "rkhunter --cronjob --rwo > /var/log/rkhunter_warnings.log" ;
+  done
+}
+
+run_updatedball ()
+{
+  echo "RUN RKUNTER UPDATEDB ON ALL HOSTS"
+  echo
+
+  for i in $(mco find); do
+    echo "-----------------------------------------------------"
+    echo "$i"
+    echo
+    ssh $i "rkhunter --propupd; rkhunter --cronjob --rwo > /var/log/rkhunter_warnings.log" ;
+  done
+}
+
+
+run_updatedb ()
+{
+  echo "RUN RKUNTER UPDATEDB ONLY ON HOSTS WHITCH NEED IT"
+  echo
+
+  for i in $(mco find); do
+    ssh $i "
+      if [ -s /var/log/rkhunter_warnings.log ] ; then
+  echo \"-----------------------------------------------------\"
+  echo \"Updating $i\" ;
+        rkhunter --propupd; rkhunter --cronjob --rwo > /var/log/rkhunter_warnings.log
+      fi"
+  done
+}
+
+case "$1" in
+  show)
+    run_show
+    ;;
+  check)
+    run_check
+    ;;
+  updatedb)
+    run_updatedb
+esac
+
+exit 0
