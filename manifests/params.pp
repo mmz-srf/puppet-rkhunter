@@ -25,6 +25,7 @@ class rkhunter::params {
   $show_lockmsgs       = "1"
   $disable_unhide      = "1"
   $installdir          = "/usr"
+  $package_manager     = 'NONE'
   $scriptwhitelist     = [ 
       '/bin/egrep',
       '/bin/fgrep',

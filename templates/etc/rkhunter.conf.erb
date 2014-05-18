@@ -333,7 +333,7 @@ DISABLE_TESTS="<%= @disable_tests %>"
 # NONE is the default for Debian as well, as running --propupd takes
 # about 4 times longer when it's set to DPKG
 #
-#PKGMGR=NONE
+PKGMGR="<%= @package_manager %>"
 
 #
 # It is possible that a file which is part of a package may be modified
