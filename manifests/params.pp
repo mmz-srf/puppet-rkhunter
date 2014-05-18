@@ -8,7 +8,7 @@ class rkhunter::params {
   $dbdir               = "/var/lib/rkhunter/db"
   $scriptdir           = "/usr/share/rkhunter/scripts"
   $logfile             = "/var/log/rkhunter.log"
-  $apped_log           = "0"
+  $append_log          = "0"
   $copy_log_on_error   = "0"
   $color_set2          = "0"
   $allow_ssh_root_user = "no"
