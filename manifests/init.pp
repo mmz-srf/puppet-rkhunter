@@ -24,6 +24,7 @@ class rkhunter  (
   $show_lockmsgs          = $rkhunter::params::show_lockmsgs,
   $disable_unhide         = $rkhunter::params::disable_unhide,
   $installdir             = $rkhunter::params::installdir,
+  $package_manager        = $rkhunter::params::package_manager,
 
   $scriptwhitelist        = $rkhunter::params::scriptwhitelist,
   $immutewhitelist        = $rkhunter::params::immutewhitelist,
