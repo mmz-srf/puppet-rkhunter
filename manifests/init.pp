@@ -7,7 +7,7 @@ class rkhunter  (
   $dbdir                  = $rkhunter::params::dbdir,
   $scriptdir              = $rkhunter::params::scriptdir,
   $logfile                = $rkhunter::params::logfile,
-  $apped_log              = $rkhunter::params::apped_log,
+  $append_log             = $rkhunter::params::append_log,
   $copy_log_on_error      = $rkhunter::params::copy_log_on_error,
   $color_set2             = $rkhunter::params::color_set2,
   $allow_ssh_root_user    = $rkhunter::params::allow_ssh_root_user,
