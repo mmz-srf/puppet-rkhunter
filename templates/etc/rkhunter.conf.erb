@@ -184,6 +184,9 @@ COPY_LOG_ON_ERROR=<%= @copy_log_on_error %>
 # disables the use of syslog.
 #
 #USE_SYSLOG=authpriv.notice
+<% if defined?(@use_syslog) %>
+USE_SYSLOG=<%= @use_syslog %>
+<% end -%>
 
 #
 # Set the following option to 1 if the second colour set is to be used.
@@ -197,14 +200,14 @@ COLOR_SET2=<%= @color_set2 %>
 # being used. If X is detected as being used, then the second colour
 # set will automatically be used.
 #
-AUTO_X_DETECT=0
+AUTO_X_DETECT=<%= @auto_x_detect %>
 
 #
 # Set the following option to 1 if it is wanted that any 'Whitelisted'
 # results are shown in white rather than green. For colour set 2 users,
 # setting this option will cause the result to be shown in black.
 #
-WHITELISTED_IS_WHITE=0
+WHITELISTED_IS_WHITE=<%= @whitelisted_is_white %>
 
 #
 # The following option is checked against the SSH configuration file
@@ -232,6 +235,9 @@ ALLOW_SSH_PROT_V1=<%= @allow_ssh_prot_v1 %>
 # usually need to be set.
 #
 #SSH_CONFIG_DIR=/etc/ssh
+<% if defined?(@ssh_config_dir) %>
+SSH_CONFIG_DIR=<%= @ssh_config_dir %>
+<% end -%>
 
 #
 # These two options determine which tests are to be performed.
@@ -295,6 +301,9 @@ DISABLE_TESTS="<%= @disable_tests %>"
 # the '--propupd' option to rebuild the file properties database.
 #
 #HASH_FUNC=sha1sum
+<% if defined?(@hash_func) %>ß
+HASH_FUNC=<%= @hash_func %>
+<% end -%>
 
 #
 # The HASH_FLD_IDX option specifies which field from the HASH_FUNC
@@ -305,6 +314,9 @@ DISABLE_TESTS="<%= @disable_tests %>"
 # than zero.
 #
 #HASH_FLD_IDX=4
+<% if defined?(@hash_fld_idx) %>
+HASH_FLD_IDX=<%= @hash_fld_idx %>
+<% end -%>
 
 #
 # The PKGMGR option tells rkhunter to use the specified package manager
@@ -333,7 +345,10 @@ DISABLE_TESTS="<%= @disable_tests %>"
 # NONE is the default for Debian as well, as running --propupd takes
 # about 4 times longer when it's set to DPKG
 #
-PKGMGR="<%= @package_manager %>"
+#PKGMGR=NONE
+<% if defined?(@package_manager) %>
+PKGMGR=<%= @package_manager %>
+<% end -%>
 
 #
 # It is possible that a file which is part of a package may be modified
@@ -353,6 +368,9 @@ PKGMGR="<%= @package_manager %>"
 # Whenever this option is changed 'rkhunter --propupd' must be run.
 #
 #PKGMGR_NO_VRFY=""
+<% pkgmgr_no_verfy.each do |pkgmgrnoverfy| -%>
+PKGMGR_NO_VRFY="<%= pkgmgrnoverfy %>"
+<% end -%>
 
 #
 # This option can be used to tell rkhunter to ignore any prelink
@@ -371,6 +389,9 @@ PKGMGR="<%= @package_manager %>"
 # specified more than once.
 #
 #IGNORE_PRELINK_DEP_ERR="/bin/ps /usr/bin/top"
+<% ignore_prelink_dep_err.each do |ignoreprelinkdeperr| -%>
+IGNORE_PRELINK_DEP_ERR="<%= ignoreprelinkdeperr %>"
+<% end -%>
 
 #
 # If the 'SOLARIS' package manager is used, then it is possible to use
@@ -382,6 +403,9 @@ PKGMGR="<%= @package_manager %>"
 # present on the system if this option is used.
 #
 #USE_SUNSUM=0
+<% if defined?(@use_sunsum) %>
+USE_SUNSUM=<%= @use_sunsum %>
+<% end -%>
 
 #
 # This option is a space-separated list of commands, directories and file
@@ -419,6 +443,9 @@ PKGMGR="<%= @package_manager %>"
 #USER_FILEPROP_FILES_DIRS="!/var/lib/rkhunter/db/mirrors.dat"
 #USER_FILEPROP_FILES_DIRS="!/var/lib/rkhunter/db/rkhunter*"
 #USER_FILEPROP_FILES_DIRS="/var/lib/rkhunter/db/i18n/*"
+<% user_fileprop_files_dirs.each do |filedirs| -%>
+USER_FILEPROP_FILES_DIRS="<%= filedirs %>"
+<% end -%>
 
 #
 # This option whitelists files and directories from existing,
@@ -442,6 +469,9 @@ PKGMGR="<%= @package_manager %>"
 # for each new file, and rkhunter will report this.
 #
 #EXISTWHITELIST=""
+<% existwhitelist.each do |ewhitelist| -%>
+EXISTWHITELIST="<%= ewhitelist %>"
+<% end -%>
 
 #
 # Whitelist various attributes of the specified files.
@@ -454,6 +484,9 @@ PKGMGR="<%= @package_manager %>"
 # characters.
 #
 #ATTRWHITELIST="/bin/ps /usr/bin/date"
+<% existwhitelist.each do |awhitelist| -%>
+ATTRWHITELIST="<%= awhitelist %>"
+<% end -%>
 
 #
 # Allow the specified commands to have the 'others'
@@ -467,6 +500,9 @@ PKGMGR="<%= @package_manager %>"
 # characters.
 #
 #WRITEWHITELIST="/bin/ps /usr/bin/date"
+<% writewhitelist.each do |wwhitelist| -%>
+WRITEWHITELIST="<%= wwhitelist %>"
+<% end -%>
 
 #
 # Allow the specified commands to be scripts.
@@ -476,7 +512,7 @@ PKGMGR="<%= @package_manager %>"
 # characters.
 #
 <% scriptwhitelist.each do |script| -%>
-SCRIPTWHITELIST=<%= script %>
+SCRIPTWHITELIST="<%= script %>"
 <% end -%>
 
 #
@@ -488,7 +524,7 @@ SCRIPTWHITELIST=<%= script %>
 #
 #IMMUTWHITELIST="/sbin/ifup /sbin/ifdown"
 <% immutewhitelist.each do |immute| -%>
-IMMUTWHITELIST=<%= immute %>
+IMMUTWHITELIST="<%= immute %>"
 <% end -%>
 
 #
@@ -505,7 +541,7 @@ IMMUTABLE_SET=<%= @immutable_set %>
 # may use wildcard characters.
 #
 <% allowhiddendir.each do |hiddendir| -%>
-ALLOWHIDDENDIR=<%= hiddendir %>
+ALLOWHIDDENDIR="<%= hiddendir %>"
 <% end -%>
 
 #
@@ -516,7 +552,7 @@ ALLOWHIDDENDIR=<%= hiddendir %>
 # characters.
 #
 <% allowhiddenfile.each do |hiddenfile| -%>
-ALLOWHIDDENFILE=<%= hiddenfile %>
+ALLOWHIDDENFILE="<%= hiddenfile %>"
 <% end -%>
 
 #
@@ -532,7 +568,7 @@ ALLOWHIDDENFILE=<%= hiddenfile %>
 # characters, but only in the file names.
 #
 <% allowprocdelfile.each do |procdelfile| -%>
-ALLOWPROCDELFILE=<%= procdelfile %>
+ALLOWPROCDELFILE="<%= procdelfile %>"
 <% end -%>
 
 #
@@ -542,7 +578,7 @@ ALLOWPROCDELFILE=<%= procdelfile %>
 # may be specified more than once.
 #
 <% allowproclisten.each do |proclisten| -%>
-ALLOWPROCLISTEN=<%= proclisten %>
+ALLOWPROCLISTEN="<%= proclisten %>"
 <% end -%>
 
 #
@@ -552,7 +588,7 @@ ALLOWPROCLISTEN=<%= proclisten %>
 # be specified more than once.
 #
 <% allowpromiscif.each do |promiscif| -%>
-ALLOWPROMISCIF=<%= promiscif %>
+ALLOWPROMISCIF="<%= promiscif %>"
 <% end -%>
 
 #
@@ -563,6 +599,9 @@ ALLOWPROMISCIF=<%= promiscif %>
 # leave it like this.
 #
 #SCAN_MODE_DEV=THOROUGH
+<% if defined?(@scan_mode_dev) %>
+SCAN_MODE_DEV=<%= @use_sunsum %>
+<% end -%>
 
 #
 # The PHALANX2_DIRTEST option is used to indicate if the Phalanx2 test is to
@@ -572,7 +611,7 @@ ALLOWPROMISCIF=<%= promiscif %>
 # should note that setting this option to 1 will cause the test to take longer
 # to complete.
 #
-PHALANX2_DIRTEST=0
+PHALANX2_DIRTEST=<%= @phlanx2_dirtest %>
 
 #
 # Allow the specified files to be present in the /dev directory,
@@ -591,6 +630,9 @@ ALLOWDEVFILE=<%= devfile %>
 # file is located.
 #
 #INETD_CONF_PATH=/etc/inetd.conf
+<% if defined?(@inetd_conf_path) %>
+INETD_CONF_PATH=<%= @inetd_conf_path %>
+<% end -%>
 
 #
 # Allow the following enabled inetd services.
@@ -618,12 +660,18 @@ ALLOWDEVFILE=<%= devfile %>
 #     INETD_ALLOWED_SVC=/network/rpc-100235_1/rpc_ticotsord
 #
 #INETD_ALLOWED_SVC=echo
+<% inetd_allowed_svc.each do |inetdallowedsvc| -%>
+INETD_ALLOWED_SVC=<%= inetdallowedsvc %>
+<% end -%>
 
 #
 # This setting tells rkhunter where the xinetd configuration
 # file is located.
 #
 #XINETD_CONF_PATH=/etc/xinetd.conf
+<% if defined?(@xinetd_conf_path) %>
+XINETD_CONF_PATH=<%= @xinetd_conf_path %>
+<% end -%>
 
 #
 # Allow the following enabled xinetd services. Whilst it would be
@@ -635,6 +683,9 @@ ALLOWDEVFILE=<%= devfile %>
 # be specified more than once.
 #
 #XINETD_ALLOWED_SVC=/etc/xinetd.d/echo
+<% xinetd_allowed_svc.each do |xinetdallowedsvc| -%>
+XINETD_ALLOWED_SVC=<%= xinetdallowedsvc %>
+<% end -%>
 
 #
 # This option tells rkhunter the local system startup file pathnames.
@@ -647,6 +698,9 @@ ALLOWDEVFILE=<%= devfile %>
 # wildcard characters.
 #
 #STARTUP_PATHS="/etc/init.d /etc/rc.local"
+<% startup_paths.each do |spaths| -%>
+STARTUP_PATHS="<%= spaths %>"
+<% end -%>
 
 #
 # This setting tells rkhunter the pathname to the file containing the
@@ -655,6 +709,9 @@ ALLOWDEVFILE=<%= devfile %>
 # should not set this option.
 #
 #PASSWORD_FILE=/etc/shadow
+<% if defined?(@passwd_file) %>
+PASSWORD_FILE=<%= @passwd_file %>
+<% end -%>
 
 #
 # Allow the following accounts to be root equivalent. These accounts
@@ -713,7 +770,7 @@ ALLOW_SYSLOG_REMOTE_LOGGING=<%= @allow_syslog_remote_logging %>
 # Note above that for the Apache web server, the name 'httpd' is used.
 #
 <% app_whitelist.each do |app| -%>
-APP_WHITELIST=<%= app %>
+APP_WHITELIST="<%= app %>"
 <% end -%>
 
 #
@@ -731,7 +788,7 @@ APP_WHITELIST=<%= app %>
 # The option may be specified more than once.
 #
 <% suspscan_dirs.each do |suspdir| -%>
-SUSPSCAN_DIRS=<%= suspdir %>
+SUSPSCAN_DIRS="<%= suspdir %>"
 <% end -%>
 
 #
@@ -798,6 +855,9 @@ PORT_WHITELIST=<%= port %>
 # first non-blank line of the file.
 #
 #OS_VERSION_FILE="/etc/debian_version"
+<% if defined?(@os_version_file) %>
+OS_VERSION_FILE="<%= @os_version_file %>"
+<% end -%>
 
 #
 # The following two options can be used to whitelist files and directories
@@ -833,6 +893,12 @@ PORT_WHITELIST=<%= port %>
 #
 #RTKT_DIR_WHITELIST=""
 #RTKT_FILE_WHITELIST=""
+<% rtkt_dir_whitelist.each do |rtktdirwhitelist| -%>
+RTKT_DIR_WHITELIST="<%= rtktdirwhitelist %>
+<% end -%>
+<% rtkt_file_whitelist.each, .each do |rtktfilewhitelist| -%>
+RTKT_DIR_WHITELIST="<%= rtktfilewhitelist %>"
+<% end -%>
 
 #
 # The following option can be used to whitelist shared library files that would
@@ -860,6 +926,12 @@ SHARED_LIB_WHITELIST=<%= shared_lib %>
 #
 #STAT_CMD=BUILTIN
 #READLINK_CMD=BUILTIN
+<% if defined?(@stat_cmd) %>
+STAT_CMD=<%= @stat_cmd %>
+<% end -%>
+<% if defined?(@readlink_cmd) %>
+READLINK_CMD=<%= @readlink_cmd %>
+<% end -%>
 
 #
 # In the file properties test any modification date/time is displayed as the
@@ -905,6 +977,9 @@ SHARED_LIB_WHITELIST=<%= shared_lib %>
 #     WEB_CMD="ftp -o -"
 #
 #WEB_CMD=""
+<% if defined?(@web_cmd) %>
+WEB_CMD="<%= @web_cmd %>"
+<% end -%>
 
 #
 # Set the following option to 0 if you do not want to receive a warning if
@@ -913,6 +988,9 @@ SHARED_LIB_WHITELIST=<%= shared_lib %>
 # issue a warning if something has changed.
 #
 #WARN_ON_OS_CHANGE=1
+<% if defined?(@warn_on_os_change) %>
+WARN_ON_OS_CHANGE=<%= @warn_on_os_change %>
+<% end -%>
 
 #
 # Set the following option to 1 if you want rkhunter to automatically run
@@ -926,6 +1004,9 @@ SHARED_LIB_WHITELIST=<%= shared_lib %>
 # by running 'rkhunter --propupd' at least once.
 #
 #UPDT_ON_OS_CHANGE=0
+<% if defined?(@updt_on_os_change) %>
+UPDT_ON_OS_CHANGE=<%= @updt_on_os_change %>
+<% end -%>
 
 #
 # Set the following option to 1 if locking is to be used when rkhunter runs.
@@ -973,6 +1054,9 @@ SHOW_LOCK_MSGS=<%= @show_lockmsgs %>
 # Enabling this feature implies you have the knowledge to interpret the results properly.
 #
 #SCANROOTKITMODE=THOROUGH
+<% if defined?(@scanrootkitmode) %>
+SCANROOTKITMODE=<%= @scanrootkitmode %>
+<% end -%>
 
 #
 # The following option can be set to the name(s) of the tests the 'unhide' command is
@@ -982,6 +1066,9 @@ SHOW_LOCK_MSGS=<%= @show_lockmsgs %>
 # and will be executed in the order given.
 #
 #UNHIDE_TESTS="sys"
+<% if defined?(@unhide_tests) %>
+UNHIDE_TESTS=<%= @unhide_tests %>
+<% end -%>
 
 #
 # If both the C 'unhide', and Ruby 'unhide.rb', programs exist on the system, then it
