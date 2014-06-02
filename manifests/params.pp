@@ -8,9 +8,12 @@ class rkhunter::params {
   $dbdir               = "/var/lib/rkhunter/db"
   $scriptdir           = "/usr/share/rkhunter/scripts"
   $logfile             = "/var/log/rkhunter.log"
-  $apped_log           = "0"
+  $append_log          = "0"
   $copy_log_on_error   = "0"
+  $use_syslog          = undef  #"authpriv.notice"
   $color_set2          = "0"
+  $auto_x_detect       = "0"
+  $whitelisted_is_white = "0"
   $allow_ssh_root_user = "no"
   $allow_ssh_prot_v1   = "0"
   $enable_tests        = "all"
@@ -25,6 +28,36 @@ class rkhunter::params {
   $show_lockmsgs       = "1"
   $disable_unhide      = "1"
   $installdir          = "/usr"
+  $ssh_config_dir      = undef  #"/etc/ssh"
+  $hash_func           = undef  #"sha1sum"
+  $hash_fld_idx        = undef  #"4"
+  $package_manager     = undef  #"NONE"
+  $pkgmgr_no_verfy     = []     #['/etc/fooconfig1 /etc/barconfig2', '/etc/foobarconfig']
+  $ignore_prelink_dep_err = []  #['/bin/ps /usr/bin/top', '/bin/foobin']
+  $use_sunsum          = undef  #"0"
+  $existwhitelist      = []     #['/path/one /path/bar', '/path/foobar*']
+  $attrwhitelist       = []     #['/path/one /path/bar', '/path/foobar*']
+  $writewhitelist      = []     #['/path/one /path/bar', '/path/foobar*'] 
+  $scan_mode_dev       = undef  #"THOROUGH"
+  $phlanx2_dirtest     = "0"
+  $inetd_conf_path     = undef  #"/etc/inetd.conf"
+  $inetd_allowed_svc   = []     #['echo']
+  $xinetd_conf_path    = undef  #"/etc/xinetd.conf"
+  $xinetd_allowed_svc  = []     #['echo'
+  $startup_paths       = []     #['/etc/init.d /etc/rc.local']
+  $passwd_file         = undef  #"/etc/shadow"
+  $user_fileprop_files_dirs = [] #['top /usr/local/sbin !/opt/ps*', '/etc/rkhunter.conf']
+  $rtkt_file_whitelist = []
+  $rtkt_dir_whitelist  = []
+  $os_version_file     = undef  #"/etc/debian_version"
+  $stat_cmd            = undef  #"BUILTIN"
+  $readlink_cmd        = undef  #"BUILTIN"
+  $web_cmd             = undef  #
+  $warn_on_os_change   = undef  #"1"
+  $updt_on_os_change   = undef  #"0"
+  $scanrootkitmode     = undef  #"TROUGH"
+  $unhide_tests        = undef  #"sys"
+
   $scriptwhitelist     = [ 
       '/bin/egrep',
       '/bin/fgrep',

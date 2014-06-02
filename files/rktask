@@ -3,8 +3,32 @@
 
 if [ $# -lt 1 ]
 then
-        echo "Usage : $0 [show|check|updatedb|updatedball]"
+        echo "
+  Script to run several rkHunter tasks on Host.
+  If no 2nd parameter is NOT provided, it will try to
+  use mCollective to find all hosts in the puppet.
+
+  Usage : $0 show|check|updatedb|updatedball [\"host1 host2 hostN\"]
+
+  show        : show last rkHunter check result
+  check       : runn check again
+  updatedb    : update rkHunter DB if required
+  updatedball : update rkHunter DB on all given/found hosts
+
+  "
         exit 0
+fi
+
+if [ $# -lt 2 ]
+then
+  HOSTLIST=`mco find`
+  if [ $? -gt 0 ]
+  then
+    echo "ERROR: no mCollective found or mco is not in the PATH"
+    exit 1;
+  fi
+else
+  HOSTLIST=$2
 fi
 
 run_show ()
@@ -12,7 +36,7 @@ run_show ()
   echo "SHOW LAST RKHUNTER CHECKRESULT"
   echo
 
-  for i in $(mco find); do
+  for i in $HOSTLIST; do
     ssh $i "
       if [ -s /var/log/rkhunter_warnings.log ] ; then
         echo \"-----------------------------------------------------\"
@@ -24,10 +48,10 @@ run_show ()
 
 run_check ()
 {
-  echo "RUN RKUNTER UPDATEDB"
+  echo "RUN RKUNTER CHECK"
   echo
 
-  for i in $(mco find); do
+  for i in $HOSTLIST; do
     echo "-----------------------------------------------------"
     echo "$i"
     echo
@@ -40,7 +64,7 @@ run_updatedball ()
   echo "RUN RKUNTER UPDATEDB ON ALL HOSTS"
   echo
 
-  for i in $(mco find); do
+  for i in $HOSTLIST; do
     echo "-----------------------------------------------------"
     echo "$i"
     echo
@@ -54,7 +78,7 @@ run_updatedb ()
   echo "RUN RKUNTER UPDATEDB ONLY ON HOSTS WHITCH NEED IT"
   echo
 
-  for i in $(mco find); do
+  for i in $HOSTLIST; do
     ssh $i "
       if [ -s /var/log/rkhunter_warnings.log ] ; then
   echo \"-----------------------------------------------------\"
