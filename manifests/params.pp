@@ -3,7 +3,7 @@ class rkhunter::params {
   $rotate_mirrors      = "1"
   $update_mirrors      = "1"
   $mirrors_mode        = "0"
-  $mail_on_wanring     = ""
+  $mail_on_warning     = ""
   $tmpdir              = "/var/lib/rkhunter/tmp"
   $dbdir               = "/var/lib/rkhunter/db"
   $scriptdir           = "/usr/share/rkhunter/scripts"

@@ -2,7 +2,7 @@ class rkhunter  (
   $rotate_mirrors         = $rkhunter::params::openvpn_dir,
   $update_mirrors         = $rkhunter::params::update_mirrors,
   $mirrors_mode           = $rkhunter::params::mirrors_mode,
-  $mail_on_wanring        = $rkhunter::params::mail_on_wanring,
+  $mail_on_warning        = $rkhunter::params::mail_on_warning,
   $tmpdir                 = $rkhunter::params::tmpdir,
   $dbdir                  = $rkhunter::params::dbdir,
   $scriptdir              = $rkhunter::params::scriptdir,
