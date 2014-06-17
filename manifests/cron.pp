@@ -6,9 +6,10 @@ class rkhunter::cron(
 
   $update = 'true',
   $syslog = 'true',
+  $log_output = '> /var/log/rkhunter_warnings.log',
 ) {
   
-  $cron_cmd = "/bin/sleep `/usr/bin/expr \$RANDOM \% ${minutes_random}`m ; rkhunter --cronjob --rwo --syslog --update > /var/log/rkhunter_warnings.log"
+  $cron_cmd = "/bin/sleep $((RANDOM%${minutes_random}))m; rkhunter --cronjob --rwo --syslog --update ${log_output}"
 
   cron { 'rkhunter-cron':
     ensure => 'present',
