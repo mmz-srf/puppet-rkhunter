@@ -63,7 +63,7 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   rotate_mirrors
   update_mirrors
   mirrors_mode
-  mail_on_wanring
+  mail_on_warning
   tmpdir
   dbdir
   scriptdir
