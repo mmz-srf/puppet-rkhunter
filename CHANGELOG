@@ -1,0 +1,3 @@
+0.1.4 2013-12-09 thbe <gicara@gmail.com>
+* Change cron command to use fqdn_rand function.
+* Added CHANGELOG
