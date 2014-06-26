@@ -6,15 +6,18 @@ module MCollective
       cat = '/bin/cat'
 
       action 'updatedb' do
-        reply[:status] = run("#{rkhunter} --propupd; #{rkhunter} --cronjob --rwo > /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:out] = run("#{rkhunter} --propupd; #{rkhunter} --cronjob --rwo > /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:status] = 'OK'
       end
 
       action 'runcheck' do
-        reply[:status] = run("#{rkhunter} --cronjob --rwo > /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:out] = run("#{rkhunter} --cronjob --rwo > /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:status] = 'OK'
       end
 
       action 'showlastrun' do
-        reply[:status] = run("#{cat} /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:out] = run("#{cat} /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
+        reply[:status] = 'OK'
       end
 
       activate_when do
