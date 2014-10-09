@@ -11,8 +11,8 @@ Manage rkhunter installation and configuration with Puppet.
 - The update and check cronjob is called staggered (predefined timewindow)
 
 ## Supported OS
-- Debian 
-- Redhat/CentOS (NOT tested yet. Please let me know if it Runs on redhat (gicara@gmail.com)
+- Debian ( tested on Debian 7.5)
+- Redhat/CentOS ( tested on CentOS 6.5)
 - FreeBSD (NOT tested yet)
 
 ## Used Modules 
