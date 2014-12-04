@@ -368,7 +368,7 @@ PKGMGR=<%= @package_manager %>
 # Whenever this option is changed 'rkhunter --propupd' must be run.
 #
 #PKGMGR_NO_VRFY=""
-<% pkgmgr_no_verfy.each do |pkgmgrnoverfy| -%>
+<% @pkgmgr_no_verfy.each do |pkgmgrnoverfy| -%>
 PKGMGR_NO_VRFY="<%= pkgmgrnoverfy %>"
 <% end -%>
 
@@ -389,7 +389,7 @@ PKGMGR_NO_VRFY="<%= pkgmgrnoverfy %>"
 # specified more than once.
 #
 #IGNORE_PRELINK_DEP_ERR="/bin/ps /usr/bin/top"
-<% ignore_prelink_dep_err.each do |ignoreprelinkdeperr| -%>
+<% @ignore_prelink_dep_err.each do |ignoreprelinkdeperr| -%>
 IGNORE_PRELINK_DEP_ERR="<%= ignoreprelinkdeperr %>"
 <% end -%>
 
@@ -443,7 +443,7 @@ USE_SUNSUM=<%= @use_sunsum %>
 #USER_FILEPROP_FILES_DIRS="!/var/lib/rkhunter/db/mirrors.dat"
 #USER_FILEPROP_FILES_DIRS="!/var/lib/rkhunter/db/rkhunter*"
 #USER_FILEPROP_FILES_DIRS="/var/lib/rkhunter/db/i18n/*"
-<% user_fileprop_files_dirs.each do |filedirs| -%>
+<% @user_fileprop_files_dirs.each do |filedirs| -%>
 USER_FILEPROP_FILES_DIRS="<%= filedirs %>"
 <% end -%>
 
@@ -469,7 +469,7 @@ USER_FILEPROP_FILES_DIRS="<%= filedirs %>"
 # for each new file, and rkhunter will report this.
 #
 #EXISTWHITELIST=""
-<% existwhitelist.each do |ewhitelist| -%>
+<% @existwhitelist.each do |ewhitelist| -%>
 EXISTWHITELIST="<%= ewhitelist %>"
 <% end -%>
 
@@ -484,7 +484,7 @@ EXISTWHITELIST="<%= ewhitelist %>"
 # characters.
 #
 #ATTRWHITELIST="/bin/ps /usr/bin/date"
-<% existwhitelist.each do |awhitelist| -%>
+<% @existwhitelist.each do |awhitelist| -%>
 ATTRWHITELIST="<%= awhitelist %>"
 <% end -%>
 
@@ -500,7 +500,7 @@ ATTRWHITELIST="<%= awhitelist %>"
 # characters.
 #
 #WRITEWHITELIST="/bin/ps /usr/bin/date"
-<% writewhitelist.each do |wwhitelist| -%>
+<% @writewhitelist.each do |wwhitelist| -%>
 WRITEWHITELIST="<%= wwhitelist %>"
 <% end -%>
 
@@ -511,7 +511,7 @@ WRITEWHITELIST="<%= wwhitelist %>"
 # be specified more than once. The option may use wildcard
 # characters.
 #
-<% scriptwhitelist.each do |script| -%>
+<% @scriptwhitelist.each do |script| -%>
 SCRIPTWHITELIST="<%= script %>"
 <% end -%>
 
@@ -523,7 +523,7 @@ SCRIPTWHITELIST="<%= script %>"
 # characters.
 #
 #IMMUTWHITELIST="/sbin/ifup /sbin/ifdown"
-<% immutewhitelist.each do |immute| -%>
+<% @immutewhitelist.each do |immute| -%>
 IMMUTWHITELIST="<%= immute %>"
 <% end -%>
 
@@ -540,7 +540,7 @@ IMMUTABLE_SET=<%= @immutable_set %>
 # The option may be specified more than once. The option
 # may use wildcard characters.
 #
-<% allowhiddendir.each do |hiddendir| -%>
+<% @allowhiddendir.each do |hiddendir| -%>
 ALLOWHIDDENDIR="<%= hiddendir %>"
 <% end -%>
 
@@ -551,7 +551,7 @@ ALLOWHIDDENDIR="<%= hiddendir %>"
 # be specified more than once. The option may use wildcard
 # characters.
 #
-<% allowhiddenfile.each do |hiddenfile| -%>
+<% @allowhiddenfile.each do |hiddenfile| -%>
 ALLOWHIDDENFILE="<%= hiddenfile %>"
 <% end -%>
 
@@ -567,7 +567,7 @@ ALLOWHIDDENFILE="<%= hiddenfile %>"
 # may be specified more than once. The option may use wildcard
 # characters, but only in the file names.
 #
-<% allowprocdelfile.each do |procdelfile| -%>
+<% @allowprocdelfile.each do |procdelfile| -%>
 ALLOWPROCDELFILE="<%= procdelfile %>"
 <% end -%>
 
@@ -577,7 +577,7 @@ ALLOWPROCDELFILE="<%= procdelfile %>"
 # This is a space-separated list of process names. The option
 # may be specified more than once.
 #
-<% allowproclisten.each do |proclisten| -%>
+<% @allowproclisten.each do |proclisten| -%>
 ALLOWPROCLISTEN="<%= proclisten %>"
 <% end -%>
 
@@ -587,7 +587,7 @@ ALLOWPROCLISTEN="<%= proclisten %>"
 # This is a space-separated list of interface names. The option may
 # be specified more than once.
 #
-<% allowpromiscif.each do |promiscif| -%>
+<% @allowpromiscif.each do |promiscif| -%>
 ALLOWPROMISCIF="<%= promiscif %>"
 <% end -%>
 
@@ -621,7 +621,7 @@ PHALANX2_DIRTEST=<%= @phlanx2_dirtest %>
 # be specified more than once. The option may use wildcard
 # characters.
 #
-<% allowdevfile.each do |devfile| -%>
+<% @allowdevfile.each do |devfile| -%>
 ALLOWDEVFILE=<%= devfile %>
 <% end -%>
 
@@ -660,7 +660,7 @@ INETD_CONF_PATH=<%= @inetd_conf_path %>
 #     INETD_ALLOWED_SVC=/network/rpc-100235_1/rpc_ticotsord
 #
 #INETD_ALLOWED_SVC=echo
-<% inetd_allowed_svc.each do |inetdallowedsvc| -%>
+<% @inetd_allowed_svc.each do |inetdallowedsvc| -%>
 INETD_ALLOWED_SVC=<%= inetdallowedsvc %>
 <% end -%>
 
@@ -683,7 +683,7 @@ XINETD_CONF_PATH=<%= @xinetd_conf_path %>
 # be specified more than once.
 #
 #XINETD_ALLOWED_SVC=/etc/xinetd.d/echo
-<% xinetd_allowed_svc.each do |xinetdallowedsvc| -%>
+<% @xinetd_allowed_svc.each do |xinetdallowedsvc| -%>
 XINETD_ALLOWED_SVC=<%= xinetdallowedsvc %>
 <% end -%>
 
@@ -698,7 +698,7 @@ XINETD_ALLOWED_SVC=<%= xinetdallowedsvc %>
 # wildcard characters.
 #
 #STARTUP_PATHS="/etc/init.d /etc/rc.local"
-<% startup_paths.each do |spaths| -%>
+<% @startup_paths.each do |spaths| -%>
 STARTUP_PATHS="<%= spaths %>"
 <% end -%>
 
@@ -724,7 +724,7 @@ PASSWORD_FILE=<%= @passwd_file %>
 # NOTE: For *BSD systems you will probably need to use this option
 # for the 'toor' account.
 #
-<% uid0_accounts.each do |account| -%>
+<% @uid0_accounts.each do |account| -%>
 UID0_ACCOUNTS=<%= account %>
 <% end -%>
 
@@ -735,7 +735,7 @@ UID0_ACCOUNTS=<%= account %>
 # This is a space-separated list of account names. The option may
 # be specified more than once.
 #
-<% pwdless_accounts.each do |pwdlessaccount| -%>
+<% @pwdless_accounts.each do |pwdlessaccount| -%>
 PWDLESS_ACCOUNTS=<%= pwdlessaccount %>
 <% end -%>
 
@@ -749,7 +749,7 @@ PWDLESS_ACCOUNTS=<%= pwdlessaccount %>
 # This is a space-separated list of pathnames. The option may
 # be specified more than once.
 #
-<% syslog_config_file.each do |syslogconfig| -%>
+<% @syslog_config_file.each do |syslogconfig| -%>
 SYSLOG_CONFIG_FILE=<%= pwdlessaccount %>
 <% end -%>
 
@@ -769,7 +769,7 @@ ALLOW_SYSLOG_REMOTE_LOGGING=<%= @allow_syslog_remote_logging %>
 #
 # Note above that for the Apache web server, the name 'httpd' is used.
 #
-<% app_whitelist.each do |app| -%>
+<% @app_whitelist.each do |app| -%>
 APP_WHITELIST="<%= app %>"
 <% end -%>
 
@@ -787,7 +787,7 @@ APP_WHITELIST="<%= app %>"
 # This is a space-separated list of directory pathnames.
 # The option may be specified more than once.
 #
-<% suspscan_dirs.each do |suspdir| -%>
+<% @suspscan_dirs.each do |suspdir| -%>
 SUSPSCAN_DIRS="<%= suspdir %>"
 <% end -%>
 
@@ -836,7 +836,7 @@ SUSPSCAN_THRESH=<%= @suspscan_thresh %>
 # NOTE: In order to whitelist a pathname, or use the asterisk option,
 # the 'lsof' command must be present.
 #
-<% port_whitelist.each do |port| -%>
+<% @port_whitelist.each do |port| -%>
 PORT_WHITELIST=<%= port %>
 <% end -%>
 
@@ -893,10 +893,10 @@ OS_VERSION_FILE="<%= @os_version_file %>"
 #
 #RTKT_DIR_WHITELIST=""
 #RTKT_FILE_WHITELIST=""
-<% rtkt_dir_whitelist.each do |rtktdirwhitelist| -%>
+<% @rtkt_dir_whitelist.each do |rtktdirwhitelist| -%>
 RTKT_DIR_WHITELIST="<%= rtktdirwhitelist %>
 <% end -%>
-<% rtkt_file_whitelist.each do |rtktfilewhitelist| -%>
+<% @rtkt_file_whitelist.each do |rtktfilewhitelist| -%>
 RTKT_DIR_WHITELIST="<%= rtktfilewhitelist %>"
 <% end -%>
 
@@ -913,7 +913,7 @@ RTKT_DIR_WHITELIST="<%= rtktfilewhitelist %>"
 # This is a space-separated list of library pathnames.
 # The option may be specified more than once.
 #
-<% shared_lib_whitelist.each do |shared_lib| -%>
+<% @shared_lib_whitelist.each do |shared_lib| -%>
 SHARED_LIB_WHITELIST=<%= shared_lib %>
 <% end -%>
 
