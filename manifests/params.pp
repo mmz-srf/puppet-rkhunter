@@ -219,6 +219,7 @@ class rkhunter::params {
       '/dev/.udev/queue.bin',
       '/dev/.udev/db/*',
       '/dev/.udev/rules.d/99-root.rules',
+      '/dev/.udev/uevent_seqnum',
       '/dev/md/autorebuild.pid', # created by mdadm
       '/dev/shm/sem.slapd-*.stats', # 389 Directory Server
     ],
