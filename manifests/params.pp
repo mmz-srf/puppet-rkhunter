@@ -136,6 +136,11 @@ class rkhunter::params {
       '/etc/.git',
       '/etc/.bzr',
     ],
+    'Debian' => [
+      '/etc/.java',
+      '/dev/.udev',
+      '/dev/.initramfs',
+    ],
     default  => [
 #      '/etc/.java',
 #      '/dev/.static',
