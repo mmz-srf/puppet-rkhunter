@@ -6,7 +6,7 @@ class rkhunter::packages {
 
   file { '/usr/local/bin/rktask':
     ensure => file,
-    mode   => 755,
+    mode   => '755',
     source => 'puppet:///modules/rkhunter/rktask'
   }
 }
