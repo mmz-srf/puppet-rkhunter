@@ -10,13 +10,13 @@
   "tags": ["rkhunter", "security"],
   "operatingsystem_support": [
     {
-      "operatingsystem": "RedHat",
+      "operatingsystem": "RedHat"
     },
     {
-      "operatingsystem": "Debian",
-    }
+      "operatingsystem": "Debian"
+    },
     {
-      "operatingsystem": "FreeBSD",
+      "operatingsystem": "FreeBSD"
     }
    ]
 }
