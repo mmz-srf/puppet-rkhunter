@@ -896,8 +896,8 @@ OS_VERSION_FILE="<%= @os_version_file %>"
 <% @rtkt_dir_whitelist.each do |rtktdirwhitelist| -%>
 RTKT_DIR_WHITELIST="<%= rtktdirwhitelist %>
 <% end -%>
-<% @rtkt_file_whitelist.each do |rtktfilewhitelist| -%>
-RTKT_DIR_WHITELIST="<%= rtktfilewhitelist %>"
+<% rtkt_file_whitelist.each do |rtktfilewhitelist| -%>
+RTKT_FILE_WHITELIST="<%= rtktfilewhitelist %>"
 <% end -%>
 
 #
