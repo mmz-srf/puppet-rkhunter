@@ -1,0 +1,22 @@
+{
+  "name": "srf-rkhunter",
+  "version": "0.1.4",
+  "author": "Gianni Carafa",
+  "license": "Apache-2.0",
+  "summary": "Manage rkHunter installation and configuration",
+  "source": "git@github.com:mmz-srf/puppet-rkhunter.git",
+  "project_page": "https://github.com/mmz-srf/puppet-rkhunter",
+  "issues_url": "https://github.com/mmz-srf/puppet-rkhunter/issues",
+  "tags": ["rkhunter", "security"],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "RedHat"
+    },
+    {
+      "operatingsystem": "Debian"
+    },
+    {
+      "operatingsystem": "FreeBSD"
+    }
+   ]
+}
