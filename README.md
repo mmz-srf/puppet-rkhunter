@@ -1,6 +1,6 @@
 puppet-rkhunter
 ===============
-
+ 
 [![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
 
 Manage rkhunter installation and configuration with Puppet. 
