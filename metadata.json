@@ -8,6 +8,7 @@
   "project_page": "https://github.com/mmz-srf/puppet-rkhunter",
   "issues_url": "https://github.com/mmz-srf/puppet-rkhunter/issues",
   "tags": ["rkhunter", "security"],
+  "dependencies": [],
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat"
