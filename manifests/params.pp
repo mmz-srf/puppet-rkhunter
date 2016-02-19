@@ -1,15 +1,15 @@
 class rkhunter::params {
 
-  $rotate_mirrors      = "1"
-  $update_mirrors      = "1"
-  $mirrors_mode        = "0"
-  $mail_on_warning     = ""
+  $rotate_mirrors      = '1'
+  $update_mirrors      = '1'
+  $mirrors_mode        = '0'
+  $mail_on_warning     = ''
   $tmpdir              = $::osfamily ? {
     'RedHat' => '/var/lib/rkhunter',
     default  => '/var/lib/rkhunter/tmp',
   }
-  $dbdir               = "/var/lib/rkhunter/db"
-  $scriptdir           = "/usr/share/rkhunter/scripts"
+  $dbdir               = '/var/lib/rkhunter/db'
+  $scriptdir           = '/usr/share/rkhunter/scripts'
   $logfile             = $::osfamily ? {
     'RedHat' => '/var/log/rkhunter/rkhunter.log',
     default  => '/var/log/rkhunter.log',
@@ -18,37 +18,37 @@ class rkhunter::params {
     'RedHat' => '1',
     default  => '0',
   }
-  $copy_log_on_error   = "0"
+  $copy_log_on_error   = '0'
   $use_syslog          = $::osfamily ? {
     'RedHat' => 'authpriv.notice',
     default  => undef,
   }
-  $color_set2          = "0"
+  $color_set2          = '0'
   $auto_x_detect       = $::osfamily ? {
     'RedHat' => '1',
     default  => '0',
   }
-  $whitelisted_is_white = "0"
+  $whitelisted_is_white = '0'
   $allow_ssh_root_user = $::osfamily ? {
     'RedHat' => 'unset',
     default  => 'no',
   }
-  $allow_ssh_prot_v1   = "0"
-  $enable_tests        = "all"
-  $disable_tests       = "suspscan hidden_procs deleted_files packet_cap_apps apps"
-  $immutable_set       = "0"
-  $allow_syslog_remote_logging = "0"
-  $suspscan_temp       = "/dev/shm"
-  $suspscan_maxsize    = "10240000"
-  $suspscan_thresh     = "200"
-  $use_locking         = "0"
-  $lock_timeout        = "300"
-  $show_lockmsgs       = "1"
+  $allow_ssh_prot_v1   = '0'
+  $enable_tests        = 'all'
+  $disable_tests       = 'suspscan hidden_procs deleted_files packet_cap_apps apps'
+  $immutable_set       = '0'
+  $allow_syslog_remote_logging = '0'
+  $suspscan_temp       = '/dev/shm'
+  $suspscan_maxsize    = '10240000'
+  $suspscan_thresh     = '200'
+  $use_locking         = '0'
+  $lock_timeout        = '300'
+  $show_lockmsgs       = '1'
   $disable_unhide      = $::osfamily ? {
     'RedHat' => '0',
     default  => '1',
   }
-  $installdir          = "/usr"
+  $installdir          = '/usr'
   $ssh_config_dir      = undef  #"/etc/ssh"
   $hash_func           = undef  #"sha1sum"
   $hash_fld_idx        = undef  #"4"
@@ -71,7 +71,7 @@ class rkhunter::params {
   $attrwhitelist       = []     #['/path/one /path/bar', '/path/foobar*']
   $writewhitelist      = []     #['/path/one /path/bar', '/path/foobar*']
   $scan_mode_dev       = undef  #"THOROUGH"
-  $phlanx2_dirtest     = "0"
+  $phlanx2_dirtest     = '0'
   $inetd_conf_path     = undef  #"/etc/inetd.conf"
   $inetd_allowed_svc   = []     #['echo']
   $xinetd_conf_path    = undef  #"/etc/xinetd.conf"

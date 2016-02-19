@@ -3,9 +3,9 @@ class rkhunter::cron(
   $minutes_random = 'DEPRECATED since version 0.1.4',
   $weekday        = '*',
   $email          = 'root@localhost',
-  
-  $update = 'true',
-  $syslog = 'true',
+
+  $update = true,
+  $syslog = true,
   $log_output = '> /var/log/rkhunter_warnings.log',
 ) {
 
