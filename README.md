@@ -1,9 +1,11 @@
 puppet-rkhunter
 ===============
- 
-[![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
+
+[![Build Status](https://travis-ci.org/puzzle/puppet-rkhunter.svg?branch=master)](https://travis-ci.org/puzzle/puppet-rkhunter)
 
 Manage rkhunter installation and configuration with Puppet. 
+
+This module is a fork of srf-rkhunter with a few bugfixes. 
 
 ## Features
 - Manage 'allmost' all config entries (some of them dont make sense in server environments)
