@@ -7,6 +7,7 @@ group :development, :test do
   gem 'rspec-system', :require => false
   gem 'rspec-system-puppet', :require => false
   gem 'rspec-system-serverspec', :require => false
+  gem 'metadata-json-lint', :require => false
 end
 
 if puppetversion = ENV['PUPPET_GEM_VERSION']
