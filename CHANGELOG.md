@@ -3,10 +3,12 @@
 ## [0.2.0] 2016-02-19
 ### Fixed
 - ERB deprication warnings (Puppet 4 support)
+
 ### Changed
 - Updated the metadata to the new format
 - Some new defaults for RedHat and Debian
 - Added specific OS versions to the metadata
+
 ### Removed
 - FreeBSD support
 
