@@ -18,5 +18,7 @@
     {
       "operatingsystem": "FreeBSD"
     }
-   ]
+   ],
+  "dependencies": [
+  ]
 }
