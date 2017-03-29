@@ -1,6 +1,5 @@
 rvm:
-  - 1.9.3
-  - 2.0.0
+  - 2.3.3
 script:
   - 'bundle exec puppet --version'
   - 'bundle exec rake validate'
@@ -8,5 +7,5 @@ script:
   - 'bundle exec rake spec'
 env:
   matrix:
-    - PUPPET_VERSION="~> 3.0"
+#    - PUPPET_VERSION="~> 3.0"
     - PUPPET_VERSION="~> 4.0"

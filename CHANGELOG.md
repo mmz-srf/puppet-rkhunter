@@ -1,8 +1,31 @@
-# Change Log
+# CHANGELOG
+
+## [1.0.0] 2017-03-29
+
+  * Sync rkhunter.conf template with default file from version 1.4.2.
+  * Add and update parameters accordingly
+  * Remove travis tests for Puppet 3 and Ruby < 2.3.
+  * Module should still work with older versions, but test tools are not compatible
+
+###  added parameters
+  * `mail_cmd`
+  * `bindir`
+  * `unhidetcp_opts`
+  * `port_path_whitelist`
+  * `warn_on_os_change`
+  * `updt_on_os_change`
+  * `show_summary_warnings_number`
+  * `show_summary_time`
+  * `empty_logfiles`
+  * `missing_logfiles`
+
+###  renamed parameters
+  * `hash_func` to `hash_cmd` (renamed upstream)
+  * `phlanx2_dirtest` to `phalanx2_dirtest` (fix typo)
 
 ## [0.2.0] 2016-02-19
 ### Fixed
-- ERB deprication warnings (Puppet 4 support)
+- ERB deprecation warnings (Puppet 4 support)
 
 ### Changed
 - Updated the metadata to the new format

@@ -1,7 +1,9 @@
-class rkhunter::packages {
+class rkhunter::packages(
+  $package_name = $rkhunter::params::package_name,
+) inherits ::rkhunter::params {
   package { 'rkhunter':
     ensure => installed,
-    name   => $::rkhunter::params::package_name,
+    name   => $package_name,
   }
 
   file { '/usr/local/bin/rktask':
