@@ -1,5 +1,10 @@
 # CHANGELOG
 
+
+## [1.0.1] 2017-04-03
+
+  * Regression fix. re-add hidden files to allowdevfiles
+
 ## [1.0.0] 2017-03-29
 
   * Sync rkhunter.conf template with default file from version 1.4.2.

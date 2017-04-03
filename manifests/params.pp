@@ -233,7 +233,11 @@ class rkhunter::params {
       '/dev/shm/sem.slapd-*.stats', # 389 Directory Server
       '/dev/shm/squid-cf*', # squid proxy
       '/dev/shm/squid-ssl_session_cache.shm', # squid ssl cache
-
+      '/dev/.mdadm.map',
+      '/dev/.udev/queue.bin',
+      '/dev/.udev/db/*',
+      '/dev/.udev/rules.d/99-root.rules',
+      '/dev/.udev/uevent_seqnum',
       # Allow PCS/Pacemaker/Corosync
       '/dev/shm/qb-attrd-*',
       '/dev/shm/qb-cfg-*',
