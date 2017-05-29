@@ -1,11 +1,10 @@
-class rkhunter::cron(
-  $hour           = '4',
-  $weekday        = '*',
+class rkhunter::cron_updatedb(
+  $hour           = '2',
+  $weekday        = '1',
   $email          = 'root@localhost',
-  $log_output = '> /var/log/rkhunter_warnings.log',
 ) {
 
-  $cron_cmd = "rkhunter --cronjob --rwo --syslog ${log_output}"
+  $cron_cmd = "rkhunter --cronjob --syslog --update"
 
   cron { 'rkhunter-cron':
     ensure      => 'present',
