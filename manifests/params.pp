@@ -1,15 +1,17 @@
 class rkhunter::params {
 
-  $rotate_mirrors      = "1"
-  $update_mirrors      = "1"
-  $mirrors_mode        = "0"
-  $mail_on_warning     = ""
+  $rotate_mirrors      = '1'
+  $update_mirrors      = '1'
+  $mirrors_mode        = '0'
+  $mail_on_warning     = ''
+  $mail_cmd            = 'mail -s "[rkhunter] Warnings found for ${HOST_NAME}"'
   $tmpdir              = $::osfamily ? {
     'RedHat' => '/var/lib/rkhunter',
     default  => '/var/lib/rkhunter/tmp',
   }
-  $dbdir               = "/var/lib/rkhunter/db"
-  $scriptdir           = "/usr/share/rkhunter/scripts"
+  $dbdir               = '/var/lib/rkhunter/db'
+  $scriptdir           = '/usr/share/rkhunter/scripts'
+  $bindir              = undef
   $logfile             = $::osfamily ? {
     'RedHat' => '/var/log/rkhunter/rkhunter.log',
     default  => '/var/log/rkhunter.log',
@@ -18,39 +20,39 @@ class rkhunter::params {
     'RedHat' => '1',
     default  => '0',
   }
-  $copy_log_on_error   = "0"
+  $copy_log_on_error   = '0'
   $use_syslog          = $::osfamily ? {
     'RedHat' => 'authpriv.notice',
     default  => undef,
   }
-  $color_set2          = "0"
+  $color_set2          = '0'
   $auto_x_detect       = $::osfamily ? {
     'RedHat' => '1',
     default  => '0',
   }
-  $whitelisted_is_white = "0"
+  $whitelisted_is_white = '0'
   $allow_ssh_root_user = $::osfamily ? {
     'RedHat' => 'unset',
     default  => 'no',
   }
-  $allow_ssh_prot_v1   = "0"
-  $enable_tests        = "all"
-  $disable_tests       = "suspscan hidden_procs deleted_files packet_cap_apps apps"
-  $immutable_set       = "0"
-  $allow_syslog_remote_logging = "0"
-  $suspscan_temp       = "/dev/shm"
-  $suspscan_maxsize    = "10240000"
-  $suspscan_thresh     = "200"
-  $use_locking         = "0"
-  $lock_timeout        = "300"
-  $show_lockmsgs       = "1"
+  $allow_ssh_prot_v1   = '0'
+  $enable_tests        = 'all'
+  $disable_tests       = 'suspscan hidden_procs deleted_files packet_cap_apps apps'
+  $immutable_set       = '0'
+  $allow_syslog_remote_logging = '0'
+  $suspscan_temp       = '/dev/shm'
+  $suspscan_maxsize    = '10240000'
+  $suspscan_thresh     = '200'
+  $use_locking         = '0'
+  $lock_timeout        = '300'
+  $show_lockmsgs       = '1'
   $disable_unhide      = $::osfamily ? {
     'RedHat' => '0',
     default  => '1',
   }
-  $installdir          = "/usr"
+  $installdir          = '/usr'
   $ssh_config_dir      = undef  #"/etc/ssh"
-  $hash_func           = undef  #"sha1sum"
+  $hash_cmd            = undef  #"sha1sum"
   $hash_fld_idx        = undef  #"4"
   $package_manager     = $::osfamily ? {
     'RedHat' => 'RPM',
@@ -71,7 +73,7 @@ class rkhunter::params {
   $attrwhitelist       = []     #['/path/one /path/bar', '/path/foobar*']
   $writewhitelist      = []     #['/path/one /path/bar', '/path/foobar*']
   $scan_mode_dev       = undef  #"THOROUGH"
-  $phlanx2_dirtest     = "0"
+  $phalanx2_dirtest    = '0'
   $inetd_conf_path     = undef  #"/etc/inetd.conf"
   $inetd_allowed_svc   = []     #['echo']
   $xinetd_conf_path    = undef  #"/etc/xinetd.conf"
@@ -95,6 +97,12 @@ class rkhunter::params {
   $updt_on_os_change   = undef  #"0"
   $scanrootkitmode     = undef  #"TROUGH"
   $unhide_tests        = undef  #"sys"
+  $unhidetcp_opts      = undef
+
+  $show_summary_warnings_number = undef
+  $show_summary_time   = undef
+  $empty_logfiles      = undef
+  $missing_logfiles    = undef
 
   $scriptwhitelist     = $::osfamily ? {
     'RedHat' => [
@@ -116,9 +124,7 @@ class rkhunter::params {
       '/usr/sbin/prelink',
     ],
   }
-  $immutewhitelist = [
-#      '/sbin/ifup /sbin/ifdown',
-  ]
+  $immutewhitelist = []
   $allowhiddendir = $::osfamily ? {
     'RedHat' => [
       '/etc/.java',
@@ -172,9 +178,12 @@ class rkhunter::params {
     '/usr/share/man/man5/.k5identity.5.gz',
     '/usr/sbin/.ipsec.hmac',
     '/sbin/.cryptsetup.hmac',
+    # etckeeper
     '/etc/.etckeeper',
     '/etc/.gitignore',
     '/etc/.bzrignore',
+# systemd
+    '/etc/.updated',
   ],
   default  => [
 #      '/etc/.java',
@@ -220,13 +229,26 @@ class rkhunter::params {
       '/dev/shm/mono.*', # tomboy creates this one
       '/dev/shm/libv4l-*', # created by libv4l
       '/dev/shm/spice.*', # created by spice video
+      '/dev/md/autorebuild.pid', # created by mdadm
+      '/dev/shm/sem.slapd-*.stats', # 389 Directory Server
+      '/dev/shm/squid-cf*', # squid proxy
+      '/dev/shm/squid-ssl_session_cache.shm', # squid ssl cache
       '/dev/.mdadm.map',
       '/dev/.udev/queue.bin',
       '/dev/.udev/db/*',
       '/dev/.udev/rules.d/99-root.rules',
       '/dev/.udev/uevent_seqnum',
-      '/dev/md/autorebuild.pid', # created by mdadm
-      '/dev/shm/sem.slapd-*.stats', # 389 Directory Server
+      # Allow PCS/Pacemaker/Corosync
+      '/dev/shm/qb-attrd-*',
+      '/dev/shm/qb-cfg-*',
+      '/dev/shm/qb-cib_rw-*',
+      '/dev/shm/qb-cib_shm-*',
+      '/dev/shm/qb-corosync-*',
+      '/dev/shm/qb-cpg-*',
+      '/dev/shm/qb-lrmd-*',
+      '/dev/shm/qb-pengine-*',
+      '/dev/shm/qb-quorum-*',
+      '/dev/shm/qb-stonith-*',
     ],
     default  => [
 #      '/dev/shm/pulse-shm-*',
@@ -251,9 +273,11 @@ class rkhunter::params {
   $port_whitelist = [
 #      '/home/user1/abc /opt/xyz TCP:2001 UDP:32011',
   ]
+  $port_path_whitelist = []
   $shared_lib_whitelist = [
 #      '/lib/snoopy.so',
   ]
+
 
 
   case $::osfamily {

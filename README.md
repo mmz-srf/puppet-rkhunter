@@ -1,30 +1,33 @@
 puppet-rkhunter
 ===============
- 
-[![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
 
-Manage rkhunter installation and configuration with Puppet. 
+[![Build Status](https://travis-ci.org/puzzle/puppet-rkhunter.svg?branch=master)](https://travis-ci.org/puzzle/puppet-rkhunter)
+
+Manage rkhunter installation and configuration with Puppet.
+
+This module is a fork of srf-rkhunter with a few bugfixes.
 
 ## Features
-- Manage 'allmost' all config entries (some of them dont make sense in server environments)
+- Manage 'almost' all config entries (some of them dont make sense in server environments)
 - Manage your whitelists
 - The update and check cronjob is called staggered (predefined timewindow)
 
 ## Supported OS
 - Debian ( tested on Debian 7.5)
-- Redhat/CentOS ( tested on CentOS 6.5)
+- Redhat/CentOS ( tested on CentOS 6.8 and 7.3)
 - FreeBSD (NOT tested yet)
 
-## Used Modules 
-Currently no external modules used. I maybe will make use of the puppet STDlib or Concat Module in future. 
+## Used Modules
+Currently no external modules used. I maybe will make use of the puppet STDlib or Concat Module in future.
 
-## Todo's 
+## Todo's
 - Make update toggle in Cronjob funktional
 - Make syslog Option in Cronjob funktional
 
 ## Configuration
 
-Important: full possible configuration is visible in params.pp. Do not uncomment them in params.pp. 
+See `templates/etc/rkhunter.conf.erb` for detailed explanation of the rkhunter config options.
+Important: full possible configuration is visible in params.pp. Do not uncomment them in params.pp.
 
 ### Minimal configuration
 ```
@@ -41,7 +44,7 @@ class yourclass{
     allow_ssh_root_user         => 'yes',
     shared_lib_whitelist        => [ '/lib/snoopy.so' ],
     allow_syslog_remote_logging => "1",
-    scriptwhitelist             => [ 
+    scriptwhitelist             => [
       '/bin/egrep',
       '/bin/fgrep',
       '/bin/which',
@@ -125,4 +128,3 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   port_whitelist
   shared_lib_whitelist
 ```
-
