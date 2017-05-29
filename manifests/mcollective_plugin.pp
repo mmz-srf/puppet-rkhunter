@@ -8,13 +8,13 @@ class rkhunter::mcollective_plugin {
   file { "${mcollecgtive_plugindir}/mcollective/agent/rkhunter.rb":
     ensure => file,
     mode   => '0754',
-    source => "puppet:///modules/rkhunter/mcollective-agent/rkhunter.rb",
+    source => 'puppet:///modules/rkhunter/mcollective-agent/rkhunter.rb',
   }
 
   file { "${mcollecgtive_plugindir}/mcollective/agent/rkhunter.ddl":
     ensure => file,
     mode   => '0754',
-    source => "puppet:///modules/rkhunter/mcollective-agent/rkhunter.ddl",
+    source => 'puppet:///modules/rkhunter/mcollective-agent/rkhunter.ddl',
   }
 
 }

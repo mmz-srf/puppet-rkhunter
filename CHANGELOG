@@ -1,4 +1,0 @@
-0.1.4 2013-12-09 thbe <gicara@gmail.com>
-* Better RedHat/Centos suport
-* Change cron command to use fqdn_rand function.
-* Added CHANGELOG
