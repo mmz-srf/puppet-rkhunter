@@ -6,7 +6,7 @@ class rkhunter::cron_updatedb(
 
   $cron_cmd = "rkhunter --cronjob --syslog --update"
 
-  cron { 'rkhunter-cron':
+  cron { 'rkhunter-cron-update':
     ensure      => 'present',
     command     => $cron_cmd,
     user        => 'root',
