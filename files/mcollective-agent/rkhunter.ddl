@@ -6,7 +6,7 @@ metadata    :name        => "rkhunter",
             :url         => "none",
             :timeout     => 300
 
-action "updatedb", :description => "Update rkhunter Database" do
+action "propupd", :description => "Update rkhunter Database" do
     display :always
 
     output :out,
