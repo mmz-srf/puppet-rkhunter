@@ -113,6 +113,7 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   allowproclisten
   allowpromiscif
   allowdevfile
+  allowipcproc
   uid0_accounts
   pwdless_accounts
   syslog_config_file
