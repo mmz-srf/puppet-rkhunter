@@ -1,28 +1,23 @@
 puppet-rkhunter
 ===============
 
-[![Build Status](https://travis-ci.org/puzzle/puppet-rkhunter.svg?branch=master)](https://travis-ci.org/puzzle/puppet-rkhunter)
+[![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
 
 Manage rkhunter installation and configuration with Puppet.
 
-This module is a fork of srf-rkhunter with a few bugfixes.
-
 ## Features
-- Manage 'almost' all config entries (some of them dont make sense in server environments)
+- Manage ALL config entries (some of them dont make sense in server environments)
 - Manage your whitelists
-- The update and check cronjob is called staggered (predefined timewindow)
+- The check cronjob is called staggered (predefined timewindow)
+- The db update cronjob is configured separately
 
 ## Supported OS
-- Debian ( tested on Debian 7.5)
+- Debian ( tested on Debian 7.5, 8.1)
 - Redhat/CentOS ( tested on CentOS 6.8 and 7.3)
 - FreeBSD (NOT tested yet)
 
 ## Used Modules
-Currently no external modules used. I maybe will make use of the puppet STDlib or Concat Module in future.
-
-## Todo's
-- Make update toggle in Cronjob funktional
-- Make syslog Option in Cronjob funktional
+No external modules are used in this module. 
 
 ## Configuration
 
@@ -52,8 +47,6 @@ class yourclass{
       '/usr/bin/ldd',
       '/usr/bin/lwp-request',
       '/usr/sbin/adduser',
-      '/usr/sbin/prelink',
-      '/usr/bin/unhide.rb',
     ],
   }
   class {'rkhunter::cron':}
@@ -120,6 +113,7 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   allowproclisten
   allowpromiscif
   allowdevfile
+  allowipcproc
   uid0_accounts
   pwdless_accounts
   syslog_config_file

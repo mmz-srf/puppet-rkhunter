@@ -59,7 +59,7 @@ run_check ()
   done
 }
 
-run_updatedball ()
+run_propupdall ()
 {
   echo "RUN RKUNTER UPDATEDB ON ALL HOSTS"
   echo
@@ -73,7 +73,7 @@ run_updatedball ()
 }
 
 
-run_updatedb ()
+run_propupd ()
 {
   echo "RUN RKUNTER UPDATEDB ONLY ON HOSTS WHITCH NEED IT"
   echo
@@ -96,7 +96,7 @@ case "$1" in
     run_check
     ;;
   updatedb)
-    run_updatedb
+    run_propupd
 esac
 
 exit 0

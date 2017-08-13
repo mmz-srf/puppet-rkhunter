@@ -766,6 +766,20 @@ ALLOWDEVFILE=<%= devfile %>
 <% end -%>
 
 #
+# Allow the specified process pathnames to use shared memory segments.
+#
+# This option may be specified more than once, and may use wildcard characters.
+#
+# The default value is the null string.
+#
+#ALLOWIPCPROC=/usr/bin/firefox
+#ALLOWIPCPROC=/usr/bin/vlc
+<% @allowipcproc.each do |ipcproc| -%>
+ALLOWIPCPROC=<%= ipcproc %>
+<% end -%>
+
+
+#
 # This option is used to indicate if the Phalanx2 test is to perform a basic
 # check, or a more thorough check. If the option is set to '0', then a basic
 # check is performed. If it is set to '1', then all the directories in the
