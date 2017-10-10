@@ -1,6 +1,6 @@
 {
   "name": "puzzleitc-rkhunter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": "Gianni Carafa",
   "license": "Apache-2.0",
   "summary": "Manage rkHunter installation and configuration",
