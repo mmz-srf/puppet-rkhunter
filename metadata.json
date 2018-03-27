@@ -1,7 +1,7 @@
 {
   "name": "puzzleitc-rkhunter",
-  "version": "1.0.2",
-  "author": "Gianni Carafa",
+  "version": "1.0.3",
+  "author": "Gianni Carafa (SRF), Philipp Gassmann & Andreas Zuber (Puzzle)",
   "license": "Apache-2.0",
   "summary": "Manage rkHunter installation and configuration",
   "source": "git@github.com:puzzle/puppet-rkhunter.git",
