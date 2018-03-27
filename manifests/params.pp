@@ -256,6 +256,9 @@ class rkhunter::params {
     ],
   }
   $allowipcproc = []
+  $allowipcpid  = []
+  $allowipcuser = []
+  $ipc_seg_size = undef
   $uid0_accounts = [
 #      'toor rooty sashroot',
   ]
