@@ -255,6 +255,10 @@ class rkhunter::params {
 #      '/dev/shm/sem.ADBE_*',
     ],
   }
+  $allowipcproc = []
+  $allowipcpid  = []
+  $allowipcuser = []
+  $ipc_seg_size = undef
   $uid0_accounts = [
 #      'toor rooty sashroot',
   ]

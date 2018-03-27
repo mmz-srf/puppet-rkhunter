@@ -87,7 +87,7 @@
 #
 # If the mirrors file is read-only, then the '--versioncheck' command-line
 # option can only be used if this option is set to '0'.
-# 
+#
 # The default value is '1'.
 #
 #ROTATE_MIRRORS=1
@@ -405,7 +405,7 @@ DISABLE_TESTS=<%= @disable_tests %>
 # Also see the HASH_FLD_IDX option.
 #
 #HASH_CMD=sha1sum
-<% if defined?(@hash_cmd) %>ß
+<% if defined?(@hash_cmd) %>
 HASH_CMD=<%= @hash_cmd %>
 <% end -%>
 
@@ -674,7 +674,7 @@ ALLOWHIDDENDIR="<%= hiddendir %>"
 # This option may be specified more than once, and may use wildcard characters.
 #
 # The default value is the null string.
-# 
+#
 #ALLOWHIDDENFILE=/usr/share/man/man1/..1.gz
 #ALLOWHIDDENFILE=/usr/bin/.fipscheck.hmac
 #ALLOWHIDDENFILE=/usr/bin/.ssh.hmac
@@ -763,6 +763,58 @@ SCAN_MODE_DEV=<%= @scan_mode_dev %>
 #ALLOWDEVFILE=/dev/shm/sem.ADBE_*
 <% @allowdevfile.each do |devfile| -%>
 ALLOWDEVFILE=<%= devfile %>
+<% end -%>
+
+#
+# Allow the specified process pathnames to use shared memory segments.
+#
+# This option may be specified more than once, and may use wildcard characters.
+#
+# The default value is the null string.
+#
+#ALLOWIPCPROC=/usr/bin/firefox
+#ALLOWIPCPROC=/usr/bin/vlc
+<% @allowipcproc.each do |ipcproc| -%>
+ALLOWIPCPROC=<%= ipcproc %>
+<% end -%>
+
+#
+# Allow the specified memory segment creator PIDs to use shared memory segments.
+#
+# This is a space-separated list of PID numbers (as given by the
+# 'ipcs -p' command). This option may be specified more than once.
+#
+# The default value is the null string.
+#
+#ALLOWIPCPID=12345 6789
+<% @allowipcpid.each do |ipcpid| -%>
+ALLOWIPCPID=<%= ipcpid %>
+<% end -%>
+
+#
+# Allow the specified account names to use shared memory segments.
+#
+# This is a space-separated list of account names. The option may be specified
+# more than once.
+#
+# The default value is the null string.
+#
+#ALLOWIPCUSER=usera userb
+<% @allowipcuser.each do |ipcuser| -%>
+ALLOWIPCUSER=<%= ipcuser %>
+<% end -%>
+
+#
+# This option can be used to set the maximum shared memory segment size
+# (in bytes) that is not considered suspicious. Any segment above this size,
+# and with 600 or 666 permissions, will be considered suspicious during the
+# shared memory check.
+#
+# The default is 1048576 (1M) bytes.
+#
+#IPC_SEG_SIZE=1048576
+<% if defined?(@ipc_seg_size) %>
+IPC_SEG_SIZE=<%= @ipc_seg_size %>
 <% end -%>
 
 #
@@ -947,7 +999,7 @@ ALLOW_SYSLOG_REMOTE_LOGGING=<%= @allow_syslog_remote_logging %>
 APP_WHITELIST="<%= app %>"
 <% end -%>
 
-# 
+#
 # Set this option to scan for suspicious files in directories which pose a
 # relatively higher risk due to user write access.
 #
@@ -958,7 +1010,7 @@ APP_WHITELIST="<%= app %>"
 #
 # Please consider adding all directories the user the (web)server runs as,
 # and has write access to, including the document root (e.g: '/var/www') and
-# log directories (e.g: '/var/log/httpd'). 
+# log directories (e.g: '/var/log/httpd').
 #
 # This is a space-separated list of directory pathnames. The option may be
 # specified more than once.
@@ -1002,7 +1054,7 @@ SUSPSCAN_THRESH=<%= @suspscan_thresh %>
 
 #
 # The following options can be used to whitelist network ports which are known
-# to have been used by malware. 
+# to have been used by malware.
 #
 # The PORT_WHITELIST option is a space-separated list of one or more of two
 # types of whitelisting. These are:
@@ -1288,10 +1340,10 @@ SHOW_LOCK_MSGS=<%= @show_lockmsgs %>
 #
 # You should only activate this feature as part of a more thorough
 # investigation, which should be based on relevant best practices and
-# procedures. 
+# procedures.
 #
 # Enabling this feature implies you have the knowledge to interpret the
-# results properly. 
+# results properly.
 #
 # The default value is the null string.
 #

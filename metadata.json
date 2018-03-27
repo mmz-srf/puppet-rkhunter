@@ -1,12 +1,12 @@
 {
-  "name": "srf-rkhunter",
-  "version": "1.0.1",
+  "name": "puzzleitc-rkhunter",
+  "version": "1.1.0",
   "author": "Gianni Carafa (SRF), Philipp Gassmann & Andreas Zuber (Puzzle)",
   "license": "Apache-2.0",
   "summary": "Manage rkHunter installation and configuration",
-  "source": "git@github.com:mmz-srf/puppet-rkhunter.git",
-  "project_page": "https://github.com/mmz-srf/puppet-rkhunter",
-  "issues_url": "https://github.com/mmz-srf/puppet-rkhunter/issues",
+  "source": "git@github.com:puzzle/puppet-rkhunter.git",
+  "project_page": "https://github.com/puzzle/puppet-rkhunter",
+  "issues_url": "https://github.com/puzzle/puppet-rkhunter/issues",
   "tags": ["rkhunter", "security"],
   "dependencies": [],
   "operatingsystem_support": [
@@ -18,5 +18,7 @@
       "operatingsystem": "Debian",
       "operatingsystemrelease": [ "7" ]
     }
-   ]
+   ],
+  "dependencies": [
+  ]
 }
