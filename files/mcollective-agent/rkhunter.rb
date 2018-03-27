@@ -5,7 +5,7 @@ module MCollective
       rkhunter = '/usr/bin/rkhunter'
       cat = '/bin/cat'
 
-      action 'updatedb' do
+      action 'propupd' do
         reply[:out] = run("#{rkhunter} --propupd; #{rkhunter} --cronjob --rwo > /var/log/rkhunter_warnings.log || true", :stdout => :out, :chomp => true)
         reply[:status] = 'OK'
       end
