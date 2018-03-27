@@ -778,6 +778,44 @@ ALLOWDEVFILE=<%= devfile %>
 ALLOWIPCPROC=<%= ipcproc %>
 <% end -%>
 
+#
+# Allow the specified memory segment creator PIDs to use shared memory segments.
+#
+# This is a space-separated list of PID numbers (as given by the
+# 'ipcs -p' command). This option may be specified more than once.
+#
+# The default value is the null string.
+#
+#ALLOWIPCPID=12345 6789
+<% @allowipcpid.each do |ipcpid| -%>
+ALLOWIPCPID=<%= ipcpid %>
+<% end -%>
+
+#
+# Allow the specified account names to use shared memory segments.
+#
+# This is a space-separated list of account names. The option may be specified
+# more than once.
+#
+# The default value is the null string.
+#
+#ALLOWIPCUSER=usera userb
+<% @allowipcuser.each do |ipcuser| -%>
+ALLOWIPCUSER=<%= ipcuser %>
+<% end -%>
+
+#
+# This option can be used to set the maximum shared memory segment size
+# (in bytes) that is not considered suspicious. Any segment above this size,
+# and with 600 or 666 permissions, will be considered suspicious during the
+# shared memory check.
+#
+# The default is 1048576 (1M) bytes.
+#
+#IPC_SEG_SIZE=1048576
+<% if defined?(@ipc_seg_size) %>
+IPC_SEG_SIZE=<%= @ipc_seg_size %>
+<% end -%>
 
 #
 # This option is used to indicate if the Phalanx2 test is to perform a basic
