@@ -255,6 +255,7 @@ class rkhunter::params {
 #      '/dev/shm/sem.ADBE_*',
     ],
   }
+  $allowipcproc = []
   $uid0_accounts = [
 #      'toor rooty sashroot',
   ]
