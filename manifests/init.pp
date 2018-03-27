@@ -65,6 +65,7 @@ class rkhunter  (
   $allowproclisten        = $rkhunter::params::allowproclisten,
   $allowpromiscif         = $rkhunter::params::allowpromiscif,
   $allowdevfile           = $rkhunter::params::allowdevfile,
+  $allowipcproc           = $rkhunter::params::allowipcproc,
   $uid0_accounts          = $rkhunter::params::uid0_accounts,
   $pwdless_accounts       = $rkhunter::params::pwdless_accounts,
   $syslog_config_file     = $rkhunter::params::syslog_config_file,

@@ -1,7 +1,7 @@
 puppet-rkhunter
 ===============
 
-[![Build Status](https://travis-ci.org/mmz-srf/puppet-rkhunter.png?branch=master)](https://travis-ci.org/mmz-srf/puppet-rkhunter)
+[![Build Status](https://travis-ci.org/puzzle/puppet-rkhunter.png?branch=master)](https://travis-ci.org/puzzle/puppet-rkhunter)
 
 Manage rkhunter installation and configuration with Puppet.
 
@@ -17,7 +17,7 @@ Manage rkhunter installation and configuration with Puppet.
 - FreeBSD (NOT tested yet)
 
 ## Used Modules
-No external modules are used in this module. 
+No external modules are used in this module.
 
 ## Configuration
 
@@ -113,6 +113,7 @@ NOTE: there may be more. I do not update this list every time. Have a look into 
   allowproclisten
   allowpromiscif
   allowdevfile
+  allowipcproc
   uid0_accounts
   pwdless_accounts
   syslog_config_file

@@ -4,7 +4,7 @@ class rkhunter::cron_updatedb(
   $email          = 'root@localhost',
 ) {
 
-  $cron_cmd = "rkhunter --cronjob --syslog --update"
+  $cron_cmd = 'rkhunter --cronjob --syslog --update'
 
   cron { 'rkhunter-cron-update':
     ensure      => 'present',
